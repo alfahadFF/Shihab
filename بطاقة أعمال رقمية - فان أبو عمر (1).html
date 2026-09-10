@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>فان أبو عمر | لنقل وتوصيل الركاب والرحلات الخاصة</title>
+  
+  <!-- خط تجوال و كايرو العصري -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS عبر CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- FontAwesome للأيقونات -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              gold: '#D4AF37',
+              goldHover: '#c59f2a',
+              goldLight: '#F3E5AB',
+              dark: '#0B132B',
+              navy: '#1C2541',
+              card: '#162035',
+              accent: '#3A506B'
+            }
+          },
+          fontFamily: {
+            sans: ['Cairo', 'Tajawal', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      font-family: 'Cairo', sans-serif;
+      background: radial-gradient(circle at 50% 0%, #1c2a4a 0%, #0b132b 75%, #050914 100%);
+      min-height: 100vh;
+      -webkit-tap-highlight-color: transparent;
+    }
+    
+    .glass-card {
+      background: rgba(22, 32, 53, 0.82);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid rgba(212, 175, 55, 0.2);
+    }
+
+    .glass-btn {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .glass-btn:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: rgba(212, 175, 55, 0.45);
+      transform: translateY(-2px);
+    }
+
+    .gold-glow {
+      box-shadow: 0 0 25px rgba(212, 175, 55, 0.35);
+    }
+
+    .gold-gradient-btn {
+      background: linear-gradient(135deg, #F3E5AB 0%, #D4AF37 50%, #AA7C11 100%);
+      transition: all 0.3s ease;
+    }
+    .gold-gradient-btn:hover {
+      background: linear-gradient(135deg, #FFF0BD 0%, #E5BE42 50%, #C3921B 100%);
+      box-shadow: 0 8px 24px rgba(212, 175, 55, 0.45);
+      transform: translateY(-2px);
+    }
+
+    .active-scale:active {
+      transform: scale(0.97);
+    }
+  </style>
+</head>
+
+<body class="text-slate-100 flex items-center justify-center p-0 sm:p-4 md:p-6 antialiased selection:bg-brand-gold selection:text-brand-dark">
+
+  <!-- الحاوية الرئيسية للبطاقة -->
+  <main class="w-full max-w-md mx-auto relative overflow-hidden glass-card sm:rounded-3xl shadow-2xl border-x-0 sm:border flex flex-col my-auto min-h-screen sm:min-h-0">
+
+    <!-- منطقة صورة الغلاف (الهيرو) مع شارة VIP -->
+    <header class="relative h-56 w-full overflow-hidden">
+      <!-- صورة الغلاف: يمكنك استبدال الرابط برابط صورة سيارتك في أي وقت -->
+      <img 
+        id="heroImage"
+        src="https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=1000&q=80" 
+        alt="فان هيونداي H1 رحلات خاصة" 
+        class="w-full h-full object-cover object-center transform hover:scale-105 transition-transform duration-700 brightness-90"
+        onerror="this.src='https://placehold.co/900x450/0B132B/D4AF37?text=%D9%81%D8%A7%D9%86+%D8%A3%D8%A8%D9%88+%D8%B9%D9%85%D8%B1'"
+      />
+      <!-- طبقة تدرج لوني لدمج الصورة مع البطاقة -->
+      <div class="absolute inset-0 bg-gradient-to-t from-brand-card via-brand-dark/60 to-transparent"></div>
+
+      <!-- شارة الخدمة الفاخرة بدون أزرار تشتيت -->
+      <div class="absolute top-4 right-4 z-10">
+        <span class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold tracking-wider bg-black/60 text-brand-gold backdrop-blur-md border border-brand-gold/30 shadow-lg">
+          <i class="fa-solid fa-crown text-[11px]"></i> VIP SERVICE • هيونداي H1
+        </span>
+      </div>
+    </header>
+
+    <!-- محتوى بيانات البطاقة الشخصية -->
+    <section class="relative px-5 sm:px-7 pb-8 pt-0 flex flex-col items-center text-center -mt-16 z-20">
+      
+      <!-- الأفاتار الدائري (اللوغو) -->
+      <div class="relative group">
+        <div class="w-28 h-28 rounded-full p-1 bg-gradient-to-tr from-brand-gold via-amber-200 to-brand-gold gold-glow shadow-xl">
+          <!-- صورة اللوغو: يمكنك استبدال الرابط برابط لوغوك الشخصي لاحقاً -->
+          <img 
+            id="avatarImage"
+            src="https://images.unsplash.com/photo-1570125909232-eb263c188f7e?auto=format&fit=crop&w=400&q=80" 
+            alt="شعار فان أبو عمر" 
+            class="w-full h-full rounded-full object-cover bg-slate-900 border-2 border-brand-card"
+            onerror="this.src='https://placehold.co/300x300/1C2541/D4AF37?text=%D8%A3%D8%A8%D9%88+%D8%B9%D9%85%D8%B1'"
+          />
+        </div>
+        <!-- شارة توثيق الحساب -->
+        <span class="absolute bottom-1 right-1 bg-brand-gold text-brand-dark rounded-full w-7 h-7 flex items-center justify-center border-2 border-brand-card shadow text-xs font-bold" title="حساب موثق">
+          <i class="fa-solid fa-check"></i>
+        </span>
+      </div>
+
+      <!-- اسم صاحب العمل والصفة المهنية -->
+      <div class="mt-4">
+        <h1 class="text-2xl sm:text-3xl font-black text-white tracking-wide flex items-center justify-center gap-2">
+          <span>فان أبو عمر</span>
+          <i class="fa-solid fa-van-shuttle text-brand-gold text-xl"></i>
+        </h1>
+        <p class="text-brand-gold font-semibold text-sm sm:text-base mt-1.5 flex items-center justify-center gap-1.5">
+          <i class="fa-solid fa-route text-xs"></i>
+          <span>نقل ركاب ومشاوير خاصة وسياحية - هيونداي H1 VIP</span>
+        </p>
+      </div>
+
+      <!-- نبذة ترويجية موجزة -->
+      <div class="mt-4 w-full bg-white/5 border border-white/5 rounded-2xl p-3.5 text-xs sm:text-sm text-slate-300 leading-relaxed font-normal shadow-inner">
+        <p>خدمات نقل وسياحة VIP وتوصيل لجميع المحافظات والمطارات بسيارة <strong>هيونداي H1</strong> حديثة ومكيفة، بأعلى معايير الراحة والرفاهية والالتزام التام بالمواعيد.</p>
+      </div>
+
+      <!-- ميزات الخدمة -->
+      <div class="grid grid-cols-4 gap-2 w-full mt-3 text-slate-300 text-[11px] sm:text-xs">
+        <div class="bg-slate-800/60 rounded-xl py-2.5 px-1 border border-white/5 flex flex-col items-center">
+          <i class="fa-solid fa-snowflake text-sky-400 mb-1 text-sm"></i>
+          <span>تكييف مركزي</span>
+        </div>
+        <div class="bg-slate-800/60 rounded-xl py-2.5 px-1 border border-white/5 flex flex-col items-center">
+          <i class="fa-solid fa-shield-halved text-emerald-400 mb-1 text-sm"></i>
+          <span>راحة وأمان</span>
+        </div>
+        <div class="bg-slate-800/60 rounded-xl py-2.5 px-1 border border-white/5 flex flex-col items-center">
+          <i class="fa-solid fa-clock text-brand-gold mb-1 text-sm"></i>
+          <span>دقة بالمواعيد</span>
+        </div>
+        <div class="bg-slate-800/60 rounded-xl py-2.5 px-1 border border-white/5 flex flex-col items-center">
+          <i class="fa-solid fa-plane-departure text-amber-400 mb-1 text-sm"></i>
+          <span>مطارات وسفر</span>
+        </div>
+      </div>
+
+      <!-- زر حفظ جهة الاتصال الأساسي في الهاتف -->
+      <div class="w-full mt-5">
+        <button 
+          onclick="downloadVCard()" 
+          class="w-full gold-gradient-btn text-brand-dark py-3.5 px-6 rounded-2xl font-black text-base flex items-center justify-center gap-3 shadow-xl active-scale cursor-pointer border-0">
+          <i class="fa-solid fa-address-card text-xl"></i>
+          <span>حفظ جهة الاتصال في هاتفك</span>
+          <i class="fa-solid fa-download text-sm"></i>
+        </button>
+      </div>
+
+      <!-- أرقام الاتصال المباشر والحجز -->
+      <div class="w-full mt-5 space-y-2.5">
+        <div class="flex items-center justify-between text-xs text-slate-400 font-bold px-1 mb-1">
+          <span>أرقام الحجز والاتصال المباشر</span>
+          <span class="text-brand-gold flex items-center gap-1">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> جاهز للطلب 24/7
+          </span>
+        </div>
+
+        <!-- الخط الأول: سيريتل وواتساب -->
+        <div class="glass-btn rounded-2xl p-3 flex items-center justify-between gap-2 shadow-sm">
+          <a href="tel:00963930381156" class="flex items-center gap-3 text-right flex-1 overflow-hidden" title="اتصال بالخط الأول">
+            <div class="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0 border border-emerald-500/30">
+              <i class="fa-solid fa-phone text-sm"></i>
+            </div>
+            <div class="truncate">
+              <p class="text-xs text-slate-400 font-medium">الخط الأساسي (سيريتل / واتساب)</p>
+              <p class="text-sm sm:text-base font-bold text-white tracking-wider font-mono dir-ltr text-right" dir="ltr">00963 930 381 156</p>
+            </div>
+          </a>
+          <div class="flex items-center gap-1.5 shrink-0">
+            <button onclick="copyToClipboard('00963930381156', 'تم نسخ رقم سيريتل بنجاح!')" title="نسخ الرقم" class="w-9 h-9 rounded-xl bg-white/5 hover:bg-white/15 text-slate-300 flex items-center justify-center transition-colors active-scale">
+              <i class="fa-regular fa-copy text-sm"></i>
+            </button>
+            <a href="tel:00963930381156" class="w-9 h-9 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white flex items-center justify-center transition-colors shadow active-scale" title="اتصال فوري">
+              <i class="fa-solid fa-phone-flip text-xs"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- الخط الثاني: إم تي إن MTN -->
+        <div class="glass-btn rounded-2xl p-3 flex items-center justify-between gap-2 shadow-sm">
+          <a href="tel:00963957290116" class="flex items-center gap-3 text-right flex-1 overflow-hidden" title="اتصال بالخط الثاني">
+            <div class="w-10 h-10 rounded-xl bg-blue-500/20 text-blue-400 flex items-center justify-center shrink-0 border border-blue-500/30">
+              <i class="fa-solid fa-phone text-sm"></i>
+            </div>
+            <div class="truncate">
+              <p class="text-xs text-slate-400 font-medium">الخط البديل (MTN)</p>
+              <p class="text-sm sm:text-base font-bold text-white tracking-wider font-mono dir-ltr text-right" dir="ltr">00963 957 290 116</p>
+            </div>
+          </a>
+          <div class="flex items-center gap-1.5 shrink-0">
+            <button onclick="copyToClipboard('00963957290116', 'تم نسخ رقم MTN بنجاح!')" title="نسخ الرقم" class="w-9 h-9 rounded-xl bg-white/5 hover:bg-white/15 text-slate-300 flex items-center justify-center transition-colors active-scale">
+              <i class="fa-regular fa-copy text-sm"></i>
+            </button>
+            <a href="tel:00963957290116" class="w-9 h-9 rounded-xl bg-blue-500 hover:bg-blue-600 text-white flex items-center justify-center transition-colors shadow active-scale" title="اتصال فوري">
+              <i class="fa-solid fa-phone-flip text-xs"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- زر المحادثة الفورية عبر واتساب -->
+        <a 
+          href="https://wa.me/963930381156?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20%D9%81%D8%A7%D9%86%20%D8%A3%D8%A8%D9%88%20%D8%B9%D9%85%D8%B1%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D8%A8%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20%D8%AD%D8%AC%D8%B2%20%D8%AA%D9%88%D8%B5%D9%8A%D9%84%20%2F%20%D8%B1%D8%AD%D9%84%D8%A9%20%D8%AE%D8%A7%D8%B5%D8%A9" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          class="w-full bg-gradient-to-r from-emerald-600 to-emerald-500 hover:from-emerald-500 hover:to-emerald-400 text-white rounded-2xl p-3.5 flex items-center justify-between transition-all duration-200 shadow-md active-scale">
+          <div class="flex items-center gap-3">
+            <div class="w-9 h-9 rounded-xl bg-white/20 flex items-center justify-center">
+              <i class="fa-brands fa-whatsapp text-2xl"></i>
+            </div>
+            <div class="text-right">
+              <span class="block text-sm font-bold">محادثة واتساب سريعة</span>
+              <span class="block text-[11px] text-emerald-100 font-normal">استفسار فوري وحجز مباشر</span>
+            </div>
+          </div>
+          <i class="fa-solid fa-chevron-left text-xs text-white/70 ml-2"></i>
+        </a>
+      </div>
+
+      <!-- شبكات التواصل الاجتماعي (إنستغرام وفيسبوك) -->
+      <div class="w-full mt-5">
+        <div class="text-xs text-slate-400 font-bold px-1 mb-2 text-right">
+          <span>حسابات التواصل الاجتماعي</span>
+        </div>
+        <div class="grid grid-cols-2 gap-2.5">
+          <!-- إنستغرام -->
+          <a 
+            href="https://www.instagram.com/lhryryshhb?igsh=MWgwOTV3ZTlibXJzZA==" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            class="glass-btn rounded-2xl p-3 flex items-center gap-2.5 group hover:border-pink-500/50">
+            <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-amber-500 via-rose-500 to-purple-600 text-white flex items-center justify-center shrink-0 shadow-sm">
+              <i class="fa-brands fa-instagram text-base"></i>
+            </div>
+            <div class="text-right truncate">
+              <span class="block text-xs font-bold text-white group-hover:text-pink-300 transition-colors truncate">إنستغرام</span>
+              <span class="block text-[10px] text-slate-400 font-mono truncate" dir="ltr">@lhryryshhb</span>
+            </div>
+          </a>
+
+          <!-- فيسبوك (يمكنك وضع الرابط في السمة href في أي وقت) -->
+          <a 
+            id="facebookLink"
+            href="#" 
+            onclick="handleFacebookClick(event)"
+            class="glass-btn rounded-2xl p-3 flex items-center gap-2.5 group hover:border-blue-500/50">
+            <div class="w-9 h-9 rounded-xl bg-blue-600 text-white flex items-center justify-center shrink-0 shadow-sm">
+              <i class="fa-brands fa-facebook-f text-sm"></i>
+            </div>
+            <div class="text-right truncate">
+              <span class="block text-xs font-bold text-white group-hover:text-blue-300 transition-colors truncate">فيسبوك</span>
+              <span class="block text-[10px] text-slate-400 truncate">فان أبو عمر</span>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- التذييل الأنيق -->
+      <footer class="mt-8 pt-4 border-t border-white/5 w-full flex flex-col items-center justify-center text-center">
+        <p class="text-xs text-slate-400 flex items-center gap-1.5">
+          <span>رحلات مريحة وآمنة في كل الأوقات</span>
+          <span class="text-brand-gold">★</span>
+        </p>
+        <p class="text-[11px] text-slate-500 mt-1">© جميع الحقوق محفوظة لـ فان أبو عمر</p>
+      </footer>
+
+    </section>
+  </main>
+
+  <!-- إشعار التوست (Toast notification) للنسخ والتنبيهات الخفيفة -->
+  <div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-slate-900/95 text-white px-5 py-3 rounded-2xl border border-brand-gold/40 shadow-2xl backdrop-blur-md flex items-center gap-3 text-xs sm:text-sm font-semibold pointer-events-none transform translate-y-16 opacity-0 transition-all duration-300">
+    <div class="w-6 h-6 rounded-full bg-brand-gold/20 text-brand-gold flex items-center justify-center text-xs">
+      <i class="fa-solid fa-check"></i>
+    </div>
+    <span id="toastMessage">تم نسخ الرقم بنجاح!</span>
+  </div>
+
+  <script>
+    /**
+     * نسخ النص إلى الحافظة بطريقة متوافقة
+     */
+    function copyToClipboard(text, customMessage) {
+      try {
+        const dummy = document.createElement('input');
+        document.body.appendChild(dummy);
+        dummy.value = text;
+        dummy.select();
+        dummy.setSelectionRange(0, 99999);
+        document.execCommand('copy');
+        document.body.removeChild(dummy);
+        showToast(customMessage || 'تم النسخ إلى الحافظة بنجاح!');
+      } catch (err) {
+        showToast('تعذر النسخ التلقائي');
+      }
+    }
+
+    /**
+     * إظهار رسالة توست خفيفة
+     */
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      const toastMsg = document.getElementById('toastMessage');
+      if (!toast || !toastMsg) return;
+
+      toastMsg.innerText = message;
+      toast.classList.remove('translate-y-16', 'opacity-0', 'pointer-events-none');
+      toast.classList.add('translate-y-0', 'opacity-100');
+
+      setTimeout(() => {
+        toast.classList.add('translate-y-16', 'opacity-0', 'pointer-events-none');
+        toast.classList.remove('translate-y-0', 'opacity-100');
+      }, 2400);
+    }
+
+    /**
+     * توليد وتحميل ملف جهة الاتصال المعياري vCard (.vcf)
+     * متوافق تلقائياً مع جهات اتصال هواتف آيفون وأندرويد
+     */
+    function downloadVCard() {
+      const name = "فان أبو عمر";
+      const title = "نقل وتوصيل ركاب - هيونداي H1";
+      const phone1 = "+963930381156";
+      const phone2 = "+963957290116";
+      const note = "فان أبو عمر لخدمات النقل والسياحة والرحلات الخاصة والمطارات بسيارة هيونداي H1 مكيفة ومريحة";
+      const currentUrl = window.location.href;
+
+      const vcardData = [
+        'BEGIN:VCARD',
+        'VERSION:3.0',
+        `FN;CHARSET=UTF-8:${name}`,
+        `N;CHARSET=UTF-8:أبو عمر;فان;;;`,
+        `ORG;CHARSET=UTF-8:فان أبو عمر لنقل الركاب`,
+        `TITLE;CHARSET=UTF-8:${title}`,
+        `TEL;TYPE=CELL,VOICE:${phone1}`,
+        `TEL;TYPE=HOME,VOICE:${phone2}`,
+        `NOTE;CHARSET=UTF-8:${note}`,
+        `URL:${currentUrl}`,
+        'END:VCARD'
+      ].join('\r\n');
+
+      const blob = new Blob([vcardData], { type: 'text/vcard;charset=utf-8;' });
+      const downloadLink = document.createElement('a');
+      downloadLink.href = URL.createObjectURL(blob);
+      downloadLink.setAttribute('download', 'Van-Abu-Omar.vcf');
+      document.body.appendChild(downloadLink);
+      downloadLink.click();
+      document.body.removeChild(downloadLink);
+      
+      showToast('جاري حفظ بطاقة الاتصال في هاتفك...');
+    }
+
+    /**
+     * تنبيه رابط الفيسبوك المؤقت
+     */
+    function handleFacebookClick(e) {
+      const link = document.getElementById('facebookLink').getAttribute('href');
+      if (link === '#' || link === '' || !link.startsWith('http')) {
+        e.preventDefault();
+        showToast('سيتم تفعيل رابط صفحة الفيسبوك قريباً');
+      }
+    }
+  </script>
+</body>
+</html>
