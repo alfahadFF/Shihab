@@ -1,4 +1,4 @@
-const CACHE_NAME = 'abu-omar-van-v2';
+const CACHE_NAME = 'abu-omar-van-v3';
 const ASSETS_TO_CACHE = [
   './',
   './index.html',
