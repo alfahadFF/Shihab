@@ -1,0 +1,27 @@
+{
+  "name": "فان أبو عمر | نقل وتوصيل ركاب",
+  "short_name": "فان أبو عمر",
+  "description": "خدمات نقل وسياحة VIP وتوصيل لجميع المحافظات والمطارات بسيارة هيونداي H1",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0B132B",
+  "theme_color": "#0B132B",
+  "lang": "ar",
+  "dir": "rtl",
+  "icons": [
+    {
+      "src": "https://res.cloudinary.com/dvzg70krq/image/upload/v1789063425/Icon-192_femixj.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "https://res.cloudinary.com/dvzg70krq/image/upload/v1789063425/Icon-192_femixj.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
