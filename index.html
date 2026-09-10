@@ -5,17 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>فان أبو عمر | لنقل وتوصيل الركاب والرحلات الخاصة</title>
   
-  <!-- إعدادات PWA وتثبيت التطبيق -->
+  <!-- إعدادات وتثبيت PWA -->
   <link rel="manifest" href="manifest.json" />
   <meta name="theme-color" content="#0B132B" />
   <meta name="mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="apple-mobile-web-app-title" content="فان أبو عمر" />
   <link rel="apple-touch-icon" href="https://res.cloudinary.com/dvzg70krq/image/upload/v1789063425/Icon-192_femixj.png" />
-<link rel="icon" type="image/png" href="https://res.cloudinary.com/dvzg70krq/image/upload/v1789063425/Icon-192_femixj.png" />
+  <link rel="icon" type="image/png" href="https://res.cloudinary.com/dvzg70krq/image/upload/v1789063425/Icon-192_femixj.png" />
 
-
-  <!-- خط تجوال وكايرو العربي المميز -->
+  <!-- خطوط تجوال وكايرو -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
@@ -115,12 +114,22 @@
   <!-- الحاوية الرئيسية للبطاقة -->
   <main class="w-full max-w-md mx-auto relative overflow-hidden glass-card sm:rounded-3xl shadow-2xl border-x-0 sm:border flex flex-col my-auto min-h-screen sm:min-h-0">
 
+    <!-- شريط تثبيت التطبيق الأنيق (يختفي كلياً بعد التثبيت أو إذا كان مثبتاً) -->
+    <aside id="installBar" class="hidden w-full bg-slate-900/90 border-b border-brand-gold/30 px-3.5 py-2 flex items-center justify-between text-xs z-40 backdrop-blur-md">
+      <div class="flex items-center gap-2 text-slate-200">
+        <i class="fa-solid fa-mobile-screen-button text-brand-gold text-sm"></i>
+        <span>ثبّت بطاقة أبو عمر على شاشتك</span>
+      </div>
+      <button onclick="installPWA()" class="bg-brand-gold hover:bg-brand-goldHover text-brand-dark font-bold px-3 py-1 rounded-lg text-[11px] transition-all active-scale shadow">
+        تثبيت
+      </button>
+    </aside>
+
     <!-- منطقة سلايدر الصور في الهيرو -->
     <header class="relative h-60 w-full overflow-hidden select-none group">
       
       <!-- حاوية الشرائح -->
       <div id="heroSlider" class="w-full h-full relative">
-        <!-- الشريحة الأولى -->
         <div class="slider-slide active absolute inset-0 w-full h-full">
           <img 
             src="https://res.cloudinary.com/dvzg70krq/image/upload/v1789062875/slider1_mqqrtd.jpg" 
@@ -130,7 +139,6 @@
           />
         </div>
 
-        <!-- الشريحة الثانية -->
         <div class="slider-slide inactive absolute inset-0 w-full h-full">
           <img 
             src="https://res.cloudinary.com/dvzg70krq/image/upload/v1789062874/logo_cnrd6r.jpg" 
@@ -140,7 +148,6 @@
           />
         </div>
 
-        <!-- الشريحة الثالثة -->
         <div class="slider-slide inactive absolute inset-0 w-full h-full">
           <img 
             src="https://res.cloudinary.com/dvzg70krq/image/upload/v1789062876/slider2_ngqaww.jpg" 
@@ -151,17 +158,17 @@
         </div>
       </div>
 
-      <!-- طبقة تدرج لوني -->
+      <!-- تدرج لوني -->
       <div class="absolute inset-0 bg-gradient-to-t from-brand-card via-brand-dark/50 to-transparent pointer-events-none z-10"></div>
 
-      <!-- شارة VIP الفاخرة -->
+      <!-- شارة VIP -->
       <div class="absolute top-3.5 right-3.5 z-20">
         <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold tracking-wider bg-black/65 text-brand-gold backdrop-blur-md border border-brand-gold/30 shadow-lg">
           <i class="fa-solid fa-crown text-[11px]"></i> VIP SERVICE • هيونداي H1
         </span>
       </div>
 
-      <!-- أزرار التنقل اليدوي في السلايدر -->
+      <!-- أزرار السلايدر -->
       <button 
         type="button"
         onclick="prevSlide()" 
@@ -178,7 +185,7 @@
         <i class="fa-solid fa-chevron-right"></i>
       </button>
 
-      <!-- مؤشرات النقاط للسلايدر (Dots) -->
+      <!-- مؤشرات السلايدر (Dots) -->
       <div class="absolute bottom-5 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2">
         <button onclick="goToSlide(0)" class="slider-dot w-6 h-1.5 rounded-full bg-brand-gold transition-all duration-300" aria-label="الشريحة 1"></button>
         <button onclick="goToSlide(1)" class="slider-dot w-2 h-1.5 rounded-full bg-white/40 hover:bg-white/70 transition-all duration-300" aria-label="الشريحة 2"></button>
@@ -189,7 +196,7 @@
     <!-- محتوى بيانات البطاقة الشخصية -->
     <section class="relative px-5 sm:px-7 pb-8 pt-0 flex flex-col items-center text-center -mt-14 z-30">
       
-      <!-- الأفاتار الدائري -->
+      <!-- الأفاتار الدائري (اللوغو) -->
       <div class="relative group">
         <div class="w-28 h-28 rounded-full p-1 bg-gradient-to-tr from-brand-gold via-amber-200 to-brand-gold gold-glow shadow-2xl relative overflow-hidden">
           <img 
@@ -242,23 +249,14 @@
         </div>
       </div>
 
-      <!-- زر حفظ جهة الاتصال وزر تثبيت التطبيق -->
-      <div class="w-full mt-5 space-y-2.5">
+      <!-- زر حفظ جهة الاتصال الأساسي (vCard) -->
+      <div class="w-full mt-5">
         <button 
           onclick="downloadVCard()" 
           class="w-full gold-gradient-btn text-brand-dark py-3.5 px-6 rounded-2xl font-black text-base flex items-center justify-center gap-3 shadow-xl active-scale cursor-pointer border-0">
           <i class="fa-solid fa-address-card text-xl"></i>
           <span>حفظ جهة الاتصال في هاتفك</span>
           <i class="fa-solid fa-download text-sm"></i>
-        </button>
-
-        <!-- زر التثبيت كتطبيق (يظهر برمجياً عند توفر دعم التثبيت) -->
-        <button 
-          id="installAppBtn" 
-          onclick="installPWA()" 
-          class="hidden w-full bg-slate-800 hover:bg-slate-700 text-brand-gold border border-brand-gold/30 py-3 px-6 rounded-2xl font-bold text-sm flex items-center justify-center gap-2.5 shadow-lg active-scale transition-all">
-          <i class="fa-solid fa-mobile-screen-button text-base"></i>
-          <span>تثبيت البطاقة كتطبيق على الهاتف</span>
         </button>
       </div>
 
@@ -313,7 +311,7 @@
           </div>
         </div>
 
-        <!-- زر المحادثة الفورية عبر واتساب -->
+        <!-- محادثة واتساب -->
         <a 
           href="https://wa.me/963930381156?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20%D9%81%D8%A7%D9%86%20%D8%A3%D8%A8%D9%88%20%D8%B9%D9%85%D8%B1%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D8%A8%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20%D8%AD%D8%AC%D8%B2%20%D8%AA%D9%88%D8%B5%D9%8A%D9%84%20%2F%20%D8%B1%D8%AD%D9%84%D8%A9%20%D8%AE%D8%A7%D8%B5%D8%A9" 
           target="_blank" 
@@ -338,7 +336,6 @@
           <span>حسابات التواصل الاجتماعي</span>
         </div>
         <div class="grid grid-cols-2 gap-2.5">
-          <!-- إنستغرام -->
           <a 
             href="https://www.instagram.com/lhryryshhb?igsh=MWgwOTV3ZTlibXJzZA==" 
             target="_blank" 
@@ -353,7 +350,6 @@
             </div>
           </a>
 
-          <!-- فيسبوك -->
           <a 
             id="facebookLink"
             href="https://www.facebook.com/share/19WaC6VNsT/" 
@@ -383,7 +379,7 @@
     </section>
   </main>
 
-  <!-- إشعار التوست (Toast notification) -->
+  <!-- إشعار التوست -->
   <div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-slate-900/95 text-white px-5 py-3 rounded-2xl border border-brand-gold/40 shadow-2xl backdrop-blur-md flex items-center gap-3 text-xs sm:text-sm font-semibold pointer-events-none transform translate-y-16 opacity-0 transition-all duration-300">
     <div class="w-6 h-6 rounded-full bg-brand-gold/20 text-brand-gold flex items-center justify-center text-xs">
       <i class="fa-solid fa-check"></i>
@@ -393,7 +389,7 @@
 
   <script>
     /**
-     * منطق سلايدر صور الهيرو
+     * منطق السلايدر
      */
     let currentSlide = 0;
     const slides = document.querySelectorAll('.slider-slide');
@@ -402,7 +398,6 @@
 
     function updateSlider(index) {
       currentSlide = (index + slides.length) % slides.length;
-      
       slides.forEach((slide, i) => {
         if (i === currentSlide) {
           slide.classList.remove('inactive');
@@ -412,7 +407,6 @@
           slide.classList.add('inactive');
         }
       });
-
       dots.forEach((dot, i) => {
         if (i === currentSlide) {
           dot.classList.remove('bg-white/40', 'w-2');
@@ -424,38 +418,22 @@
       });
     }
 
-    function nextSlide() {
-      updateSlider(currentSlide + 1);
-      resetAutoSlide();
-    }
-
-    function prevSlide() {
-      updateSlider(currentSlide - 1);
-      resetAutoSlide();
-    }
-
-    function goToSlide(index) {
-      updateSlider(index);
-      resetAutoSlide();
-    }
+    function nextSlide() { updateSlider(currentSlide + 1); resetAutoSlide(); }
+    function prevSlide() { updateSlider(currentSlide - 1); resetAutoSlide(); }
+    function goToSlide(index) { updateSlider(index); resetAutoSlide(); }
 
     function startAutoSlide() {
       if (!autoSlideInterval) {
-        autoSlideInterval = setInterval(() => {
-          updateSlider(currentSlide + 1);
-        }, 4000);
+        autoSlideInterval = setInterval(() => updateSlider(currentSlide + 1), 4000);
       }
     }
-
     function resetAutoSlide() {
       clearInterval(autoSlideInterval);
       autoSlideInterval = null;
       startAutoSlide();
     }
 
-    window.addEventListener('load', () => {
-      startAutoSlide();
-    });
+    window.addEventListener('load', () => startAutoSlide());
 
     /**
      * نسخ النص إلى الحافظة
@@ -494,7 +472,7 @@
     }
 
     /**
-     * توليد وتحميل بطاقة vCard
+     * تحميل بطاقة vCard
      */
     function downloadVCard() {
       const name = "فان أبو عمر";
@@ -532,26 +510,28 @@
     }
 
     /**
-     * تسجيل Service Worker ودعم تثبيت التطبيق PWA
+     * تسجيل Service Worker وإدارة شريط التثبيت الذكي
      */
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('./sw.js')
-          .then((reg) => console.log('Service Worker Registered!', reg))
-          .catch((err) => console.log('Service Worker registration failed: ', err));
+        navigator.serviceWorker.register('./sw.js').catch((err) => console.log('SW Error: ', err));
       });
     }
 
     let deferredPrompt = null;
-    const installBtn = document.getElementById('installAppBtn');
+    const installBar = document.getElementById('installBar');
+    const isRunningStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
 
-    window.addEventListener('beforeinstallprompt', (e) => {
-      e.preventDefault();
-      deferredPrompt = e;
-      if (installBtn) {
-        installBtn.classList.remove('hidden');
-      }
-    });
+    // إخفاء الشريط نهائياً إذا كانت الصفحة مفتوحة كتطبيق مثبت
+    if (!isRunningStandalone) {
+      window.addEventListener('beforeinstallprompt', (e) => {
+        e.preventDefault();
+        deferredPrompt = e;
+        if (installBar) {
+          installBar.classList.remove('hidden');
+        }
+      });
+    }
 
     function installPWA() {
       if (!deferredPrompt) return;
@@ -561,13 +541,14 @@
           showToast('تم بدء تثبيت التطبيق على جهازك!');
         }
         deferredPrompt = null;
-        if (installBtn) installBtn.classList.add('hidden');
+        if (installBar) installBar.classList.add('hidden');
       });
     }
 
+    // إخفاء الشريط وتنبيه المستخدم عند اكتمال التثبيت
     window.addEventListener('appinstalled', () => {
-      showToast('تم تثبيت تطبيق فان أبو عمر بنجاح!');
-      if (installBtn) installBtn.classList.add('hidden');
+      if (installBar) installBar.classList.add('hidden');
+      showToast('تم تثبيت التطبيق بنجاح!');
     });
   </script>
 </body>
