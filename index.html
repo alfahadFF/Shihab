@@ -5,7 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>فان أبو عمر | لنقل وتوصيل الركاب والرحلات الخاصة</title>
   
-  <!-- خط تجوال و كايرو العصري -->
+  <!-- إعدادات PWA وتثبيت التطبيق -->
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#0B132B" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="فان أبو عمر" />
+  <link rel="apple-touch-icon" href="https://res.cloudinary.com/dvzg70krq/image/upload/v1789063425/Icon-192_femixj.png" />
+<link rel="icon" type="image/png" href="https://res.cloudinary.com/dvzg70krq/image/upload/v1789063425/Icon-192_femixj.png" />
+
+
+  <!-- خط تجوال وكايرو العربي المميز -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
@@ -48,10 +58,10 @@
     }
     
     .glass-card {
-      background: rgba(22, 32, 53, 0.82);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-      border: 1px solid rgba(212, 175, 55, 0.2);
+      background: rgba(22, 32, 53, 0.86);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(212, 175, 55, 0.22);
     }
 
     .glass-btn {
@@ -82,6 +92,21 @@
     .active-scale:active {
       transform: scale(0.97);
     }
+
+    /* أنماط السلايدر المتجاوب */
+    .slider-slide {
+      transition: opacity 0.8s ease-in-out, transform 1.2s ease-out;
+    }
+    .slider-slide.active {
+      opacity: 1;
+      transform: scale(1);
+      z-index: 2;
+    }
+    .slider-slide.inactive {
+      opacity: 0;
+      transform: scale(1.06);
+      z-index: 1;
+    }
   </style>
 </head>
 
@@ -90,50 +115,98 @@
   <!-- الحاوية الرئيسية للبطاقة -->
   <main class="w-full max-w-md mx-auto relative overflow-hidden glass-card sm:rounded-3xl shadow-2xl border-x-0 sm:border flex flex-col my-auto min-h-screen sm:min-h-0">
 
-    <!-- منطقة صورة الغلاف (الهيرو) مع شارة VIP -->
-    <header class="relative h-56 w-full overflow-hidden">
-      <!-- صورة الغلاف: يمكنك استبدال الرابط برابط صورة سيارتك في أي وقت -->
-      <img 
-        id="heroImage"
-        src="https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=1000&q=80" 
-        alt="فان هيونداي H1 رحلات خاصة" 
-        class="w-full h-full object-cover object-center transform hover:scale-105 transition-transform duration-700 brightness-90"
-        onerror="this.src='https://placehold.co/900x450/0B132B/D4AF37?text=%D9%81%D8%A7%D9%86+%D8%A3%D8%A8%D9%88+%D8%B9%D9%85%D8%B1'"
-      />
-      <!-- طبقة تدرج لوني لدمج الصورة مع البطاقة -->
-      <div class="absolute inset-0 bg-gradient-to-t from-brand-card via-brand-dark/60 to-transparent"></div>
+    <!-- منطقة سلايدر الصور في الهيرو -->
+    <header class="relative h-60 w-full overflow-hidden select-none group">
+      
+      <!-- حاوية الشرائح -->
+      <div id="heroSlider" class="w-full h-full relative">
+        <!-- الشريحة الأولى -->
+        <div class="slider-slide active absolute inset-0 w-full h-full">
+          <img 
+            src="https://res.cloudinary.com/dvzg70krq/image/upload/v1789062875/slider1_mqqrtd.jpg" 
+            alt="فان أبو عمر - شريحة 1" 
+            class="w-full h-full object-cover object-center brightness-90"
+            onerror="this.src='https://placehold.co/900x500/0B132B/D4AF37?text=%D9%81%D8%A7%D9%86+%D8%A3%D8%A8%D9%88+%D8%B9%D9%85%D8%B1'"
+          />
+        </div>
 
-      <!-- شارة الخدمة الفاخرة بدون أزرار تشتيت -->
-      <div class="absolute top-4 right-4 z-10">
-        <span class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold tracking-wider bg-black/60 text-brand-gold backdrop-blur-md border border-brand-gold/30 shadow-lg">
+        <!-- الشريحة الثانية -->
+        <div class="slider-slide inactive absolute inset-0 w-full h-full">
+          <img 
+            src="https://res.cloudinary.com/dvzg70krq/image/upload/v1789062874/logo_cnrd6r.jpg" 
+            alt="فان أبو عمر - شريحة 2" 
+            class="w-full h-full object-cover object-center brightness-90"
+            onerror="this.src='https://placehold.co/900x500/162035/D4AF37?text=%D9%81%D8%A7%D9%86+%D8%A3%D8%A8%D9%88+%D8%B9%D9%85%D8%B1'"
+          />
+        </div>
+
+        <!-- الشريحة الثالثة -->
+        <div class="slider-slide inactive absolute inset-0 w-full h-full">
+          <img 
+            src="https://res.cloudinary.com/dvzg70krq/image/upload/v1789062876/slider2_ngqaww.jpg" 
+            alt="فان أبو عمر - شريحة 3" 
+            class="w-full h-full object-cover object-center brightness-90"
+            onerror="this.src='https://placehold.co/900x500/0B132B/D4AF37?text=%D9%81%D8%A7%D9%86+%D8%A3%D8%A8%D9%88+%D8%B9%D9%85%D8%B1'"
+          />
+        </div>
+      </div>
+
+      <!-- طبقة تدرج لوني -->
+      <div class="absolute inset-0 bg-gradient-to-t from-brand-card via-brand-dark/50 to-transparent pointer-events-none z-10"></div>
+
+      <!-- شارة VIP الفاخرة -->
+      <div class="absolute top-3.5 right-3.5 z-20">
+        <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold tracking-wider bg-black/65 text-brand-gold backdrop-blur-md border border-brand-gold/30 shadow-lg">
           <i class="fa-solid fa-crown text-[11px]"></i> VIP SERVICE • هيونداي H1
         </span>
+      </div>
+
+      <!-- أزرار التنقل اليدوي في السلايدر -->
+      <button 
+        type="button"
+        onclick="prevSlide()" 
+        aria-label="الصورة السابقة"
+        class="absolute left-2.5 top-1/2 -translate-y-1/2 z-20 w-8 h-8 rounded-full bg-black/40 hover:bg-black/70 text-white flex items-center justify-center text-xs backdrop-blur-sm border border-white/10 transition-all opacity-80 hover:opacity-100 active:scale-90">
+        <i class="fa-solid fa-chevron-left"></i>
+      </button>
+
+      <button 
+        type="button"
+        onclick="nextSlide()" 
+        aria-label="الصورة التالية"
+        class="absolute right-2.5 top-1/2 -translate-y-1/2 z-20 w-8 h-8 rounded-full bg-black/40 hover:bg-black/70 text-white flex items-center justify-center text-xs backdrop-blur-sm border border-white/10 transition-all opacity-80 hover:opacity-100 active:scale-90">
+        <i class="fa-solid fa-chevron-right"></i>
+      </button>
+
+      <!-- مؤشرات النقاط للسلايدر (Dots) -->
+      <div class="absolute bottom-5 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2">
+        <button onclick="goToSlide(0)" class="slider-dot w-6 h-1.5 rounded-full bg-brand-gold transition-all duration-300" aria-label="الشريحة 1"></button>
+        <button onclick="goToSlide(1)" class="slider-dot w-2 h-1.5 rounded-full bg-white/40 hover:bg-white/70 transition-all duration-300" aria-label="الشريحة 2"></button>
+        <button onclick="goToSlide(2)" class="slider-dot w-2 h-1.5 rounded-full bg-white/40 hover:bg-white/70 transition-all duration-300" aria-label="الشريحة 3"></button>
       </div>
     </header>
 
     <!-- محتوى بيانات البطاقة الشخصية -->
-    <section class="relative px-5 sm:px-7 pb-8 pt-0 flex flex-col items-center text-center -mt-16 z-20">
+    <section class="relative px-5 sm:px-7 pb-8 pt-0 flex flex-col items-center text-center -mt-14 z-30">
       
-      <!-- الأفاتار الدائري (اللوغو) -->
+      <!-- الأفاتار الدائري -->
       <div class="relative group">
-        <div class="w-28 h-28 rounded-full p-1 bg-gradient-to-tr from-brand-gold via-amber-200 to-brand-gold gold-glow shadow-xl">
-          <!-- صورة اللوغو: يمكنك استبدال الرابط برابط لوغوك الشخصي لاحقاً -->
+        <div class="w-28 h-28 rounded-full p-1 bg-gradient-to-tr from-brand-gold via-amber-200 to-brand-gold gold-glow shadow-2xl relative overflow-hidden">
           <img 
             id="avatarImage"
-            src="https://images.unsplash.com/photo-1570125909232-eb263c188f7e?auto=format&fit=crop&w=400&q=80" 
-            alt="شعار فان أبو عمر" 
-            class="w-full h-full rounded-full object-cover bg-slate-900 border-2 border-brand-card"
+            src="https://res.cloudinary.com/dvzg70krq/image/upload/v1789062875/1789062579538_qnku1a.jpg" 
+            alt="أبو عمر - سائق فان هيونداي H1" 
+            class="w-full h-full rounded-full object-cover object-top bg-slate-900 border-2 border-brand-card transition-transform duration-500 group-hover:scale-105"
             onerror="this.src='https://placehold.co/300x300/1C2541/D4AF37?text=%D8%A3%D8%A8%D9%88+%D8%B9%D9%85%D8%B1'"
           />
         </div>
-        <!-- شارة توثيق الحساب -->
-        <span class="absolute bottom-1 right-1 bg-brand-gold text-brand-dark rounded-full w-7 h-7 flex items-center justify-center border-2 border-brand-card shadow text-xs font-bold" title="حساب موثق">
+        <span class="absolute bottom-1 right-1 bg-brand-gold text-brand-dark rounded-full w-7 h-7 flex items-center justify-center border-2 border-brand-card shadow-lg text-xs font-black" title="حساب موثق ومعتمد">
           <i class="fa-solid fa-check"></i>
         </span>
       </div>
 
       <!-- اسم صاحب العمل والصفة المهنية -->
-      <div class="mt-4">
+      <div class="mt-3.5">
         <h1 class="text-2xl sm:text-3xl font-black text-white tracking-wide flex items-center justify-center gap-2">
           <span>فان أبو عمر</span>
           <i class="fa-solid fa-van-shuttle text-brand-gold text-xl"></i>
@@ -145,11 +218,11 @@
       </div>
 
       <!-- نبذة ترويجية موجزة -->
-      <div class="mt-4 w-full bg-white/5 border border-white/5 rounded-2xl p-3.5 text-xs sm:text-sm text-slate-300 leading-relaxed font-normal shadow-inner">
+      <div class="mt-4 w-full bg-white/5 border border-white/10 rounded-2xl p-3.5 text-xs sm:text-sm text-slate-300 leading-relaxed font-normal shadow-inner">
         <p>خدمات نقل وسياحة VIP وتوصيل لجميع المحافظات والمطارات بسيارة <strong>هيونداي H1</strong> حديثة ومكيفة، بأعلى معايير الراحة والرفاهية والالتزام التام بالمواعيد.</p>
       </div>
 
-      <!-- ميزات الخدمة -->
+      <!-- ميزات وخدمات السيارة -->
       <div class="grid grid-cols-4 gap-2 w-full mt-3 text-slate-300 text-[11px] sm:text-xs">
         <div class="bg-slate-800/60 rounded-xl py-2.5 px-1 border border-white/5 flex flex-col items-center">
           <i class="fa-solid fa-snowflake text-sky-400 mb-1 text-sm"></i>
@@ -169,14 +242,23 @@
         </div>
       </div>
 
-      <!-- زر حفظ جهة الاتصال الأساسي في الهاتف -->
-      <div class="w-full mt-5">
+      <!-- زر حفظ جهة الاتصال وزر تثبيت التطبيق -->
+      <div class="w-full mt-5 space-y-2.5">
         <button 
           onclick="downloadVCard()" 
           class="w-full gold-gradient-btn text-brand-dark py-3.5 px-6 rounded-2xl font-black text-base flex items-center justify-center gap-3 shadow-xl active-scale cursor-pointer border-0">
           <i class="fa-solid fa-address-card text-xl"></i>
           <span>حفظ جهة الاتصال في هاتفك</span>
           <i class="fa-solid fa-download text-sm"></i>
+        </button>
+
+        <!-- زر التثبيت كتطبيق (يظهر برمجياً عند توفر دعم التثبيت) -->
+        <button 
+          id="installAppBtn" 
+          onclick="installPWA()" 
+          class="hidden w-full bg-slate-800 hover:bg-slate-700 text-brand-gold border border-brand-gold/30 py-3 px-6 rounded-2xl font-bold text-sm flex items-center justify-center gap-2.5 shadow-lg active-scale transition-all">
+          <i class="fa-solid fa-mobile-screen-button text-base"></i>
+          <span>تثبيت البطاقة كتطبيق على الهاتف</span>
         </button>
       </div>
 
@@ -189,7 +271,7 @@
           </span>
         </div>
 
-        <!-- الخط الأول: سيريتل وواتساب -->
+        <!-- الخط الأول -->
         <div class="glass-btn rounded-2xl p-3 flex items-center justify-between gap-2 shadow-sm">
           <a href="tel:00963930381156" class="flex items-center gap-3 text-right flex-1 overflow-hidden" title="اتصال بالخط الأول">
             <div class="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0 border border-emerald-500/30">
@@ -210,7 +292,7 @@
           </div>
         </div>
 
-        <!-- الخط الثاني: إم تي إن MTN -->
+        <!-- الخط الثاني -->
         <div class="glass-btn rounded-2xl p-3 flex items-center justify-between gap-2 shadow-sm">
           <a href="tel:00963957290116" class="flex items-center gap-3 text-right flex-1 overflow-hidden" title="اتصال بالخط الثاني">
             <div class="w-10 h-10 rounded-xl bg-blue-500/20 text-blue-400 flex items-center justify-center shrink-0 border border-blue-500/30">
@@ -250,7 +332,7 @@
         </a>
       </div>
 
-      <!-- شبكات التواصل الاجتماعي (إنستغرام وفيسبوك) -->
+      <!-- شبكات التواصل الاجتماعي -->
       <div class="w-full mt-5">
         <div class="text-xs text-slate-400 font-bold px-1 mb-2 text-right">
           <span>حسابات التواصل الاجتماعي</span>
@@ -271,18 +353,19 @@
             </div>
           </a>
 
-          <!-- فيسبوك (يمكنك وضع الرابط في السمة href في أي وقت) -->
+          <!-- فيسبوك -->
           <a 
             id="facebookLink"
-            href="#" 
-            onclick="handleFacebookClick(event)"
+            href="https://www.facebook.com/share/19WaC6VNsT/" 
+            target="_blank" 
+            rel="noopener noreferrer"
             class="glass-btn rounded-2xl p-3 flex items-center gap-2.5 group hover:border-blue-500/50">
-            <div class="w-9 h-9 rounded-xl bg-blue-600 text-white flex items-center justify-center shrink-0 shadow-sm">
+            <div class="w-9 h-9 rounded-xl bg-blue-600 text-white flex items-center justify-center shrink-0 shadow-sm group-hover:scale-105 transition-transform">
               <i class="fa-brands fa-facebook-f text-sm"></i>
             </div>
             <div class="text-right truncate">
               <span class="block text-xs font-bold text-white group-hover:text-blue-300 transition-colors truncate">فيسبوك</span>
-              <span class="block text-[10px] text-slate-400 truncate">فان أبو عمر</span>
+              <span class="block text-[10px] text-slate-400 truncate">صفحة فان أبو عمر</span>
             </div>
           </a>
         </div>
@@ -300,7 +383,7 @@
     </section>
   </main>
 
-  <!-- إشعار التوست (Toast notification) للنسخ والتنبيهات الخفيفة -->
+  <!-- إشعار التوست (Toast notification) -->
   <div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-slate-900/95 text-white px-5 py-3 rounded-2xl border border-brand-gold/40 shadow-2xl backdrop-blur-md flex items-center gap-3 text-xs sm:text-sm font-semibold pointer-events-none transform translate-y-16 opacity-0 transition-all duration-300">
     <div class="w-6 h-6 rounded-full bg-brand-gold/20 text-brand-gold flex items-center justify-center text-xs">
       <i class="fa-solid fa-check"></i>
@@ -310,7 +393,72 @@
 
   <script>
     /**
-     * نسخ النص إلى الحافظة بطريقة متوافقة
+     * منطق سلايدر صور الهيرو
+     */
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slider-slide');
+    const dots = document.querySelectorAll('.slider-dot');
+    let autoSlideInterval = null;
+
+    function updateSlider(index) {
+      currentSlide = (index + slides.length) % slides.length;
+      
+      slides.forEach((slide, i) => {
+        if (i === currentSlide) {
+          slide.classList.remove('inactive');
+          slide.classList.add('active');
+        } else {
+          slide.classList.remove('active');
+          slide.classList.add('inactive');
+        }
+      });
+
+      dots.forEach((dot, i) => {
+        if (i === currentSlide) {
+          dot.classList.remove('bg-white/40', 'w-2');
+          dot.classList.add('bg-brand-gold', 'w-6');
+        } else {
+          dot.classList.remove('bg-brand-gold', 'w-6');
+          dot.classList.add('bg-white/40', 'w-2');
+        }
+      });
+    }
+
+    function nextSlide() {
+      updateSlider(currentSlide + 1);
+      resetAutoSlide();
+    }
+
+    function prevSlide() {
+      updateSlider(currentSlide - 1);
+      resetAutoSlide();
+    }
+
+    function goToSlide(index) {
+      updateSlider(index);
+      resetAutoSlide();
+    }
+
+    function startAutoSlide() {
+      if (!autoSlideInterval) {
+        autoSlideInterval = setInterval(() => {
+          updateSlider(currentSlide + 1);
+        }, 4000);
+      }
+    }
+
+    function resetAutoSlide() {
+      clearInterval(autoSlideInterval);
+      autoSlideInterval = null;
+      startAutoSlide();
+    }
+
+    window.addEventListener('load', () => {
+      startAutoSlide();
+    });
+
+    /**
+     * نسخ النص إلى الحافظة
      */
     function copyToClipboard(text, customMessage) {
       try {
@@ -328,7 +476,7 @@
     }
 
     /**
-     * إظهار رسالة توست خفيفة
+     * إظهار رسالة توست
      */
     function showToast(message) {
       const toast = document.getElementById('toast');
@@ -346,16 +494,16 @@
     }
 
     /**
-     * توليد وتحميل ملف جهة الاتصال المعياري vCard (.vcf)
-     * متوافق تلقائياً مع جهات اتصال هواتف آيفون وأندرويد
+     * توليد وتحميل بطاقة vCard
      */
     function downloadVCard() {
       const name = "فان أبو عمر";
-      const title = "نقل وتوصيل ركاب - هيونداي H1";
+      const title = "نقل وتوصيل ركاب - هيونداي H1 VIP";
       const phone1 = "+963930381156";
       const phone2 = "+963957290116";
       const note = "فان أبو عمر لخدمات النقل والسياحة والرحلات الخاصة والمطارات بسيارة هيونداي H1 مكيفة ومريحة";
-      const currentUrl = window.location.href;
+      const fbUrl = "https://www.facebook.com/share/19WaC6VNsT/";
+      const instaUrl = "https://www.instagram.com/lhryryshhb";
 
       const vcardData = [
         'BEGIN:VCARD',
@@ -365,9 +513,10 @@
         `ORG;CHARSET=UTF-8:فان أبو عمر لنقل الركاب`,
         `TITLE;CHARSET=UTF-8:${title}`,
         `TEL;TYPE=CELL,VOICE:${phone1}`,
-        `TEL;TYPE=HOME,VOICE:${phone2}`,
+        `TEL;TYPE=WORK,VOICE:${phone2}`,
         `NOTE;CHARSET=UTF-8:${note}`,
-        `URL:${currentUrl}`,
+        `URL:${fbUrl}`,
+        `URL:${instaUrl}`,
         'END:VCARD'
       ].join('\r\n');
 
@@ -383,15 +532,43 @@
     }
 
     /**
-     * تنبيه رابط الفيسبوك المؤقت
+     * تسجيل Service Worker ودعم تثبيت التطبيق PWA
      */
-    function handleFacebookClick(e) {
-      const link = document.getElementById('facebookLink').getAttribute('href');
-      if (link === '#' || link === '' || !link.startsWith('http')) {
-        e.preventDefault();
-        showToast('سيتم تفعيل رابط صفحة الفيسبوك قريباً');
-      }
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js')
+          .then((reg) => console.log('Service Worker Registered!', reg))
+          .catch((err) => console.log('Service Worker registration failed: ', err));
+      });
     }
+
+    let deferredPrompt = null;
+    const installBtn = document.getElementById('installAppBtn');
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      if (installBtn) {
+        installBtn.classList.remove('hidden');
+      }
+    });
+
+    function installPWA() {
+      if (!deferredPrompt) return;
+      deferredPrompt.prompt();
+      deferredPrompt.userChoice.then((choiceResult) => {
+        if (choiceResult.outcome === 'accepted') {
+          showToast('تم بدء تثبيت التطبيق على جهازك!');
+        }
+        deferredPrompt = null;
+        if (installBtn) installBtn.classList.add('hidden');
+      });
+    }
+
+    window.addEventListener('appinstalled', () => {
+      showToast('تم تثبيت تطبيق فان أبو عمر بنجاح!');
+      if (installBtn) installBtn.classList.add('hidden');
+    });
   </script>
 </body>
 </html>
