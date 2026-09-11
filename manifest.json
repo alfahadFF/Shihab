@@ -1,6 +1,6 @@
 {
-  "name": "فان أبو عمر | نقل وتوصيل ركاب",
-  "short_name": "فان أبو عمر",
+  "name": "نقليات أبو عمر | نقل وتوصيل ركاب",
+  "short_name": "نقليات أبو عمر",
   "description": "خدمات نقل وسياحة VIP وتوصيل لجميع المحافظات والمطارات بسيارة هيونداي H1",
   "start_url": "./",
   "scope": "./",
@@ -12,13 +12,13 @@
   "dir": "rtl",
   "icons": [
     {
-      "src": "https://res.cloudinary.com/dvzg70krq/image/upload/v1789063425/Icon-192_femixj.png",
+      "src": "./icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "https://res.cloudinary.com/dvzg70krq/image/upload/v1789063425/Icon-192_femixj.png",
+      "src": "./icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
