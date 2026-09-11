@@ -1,9 +1,10 @@
-const CACHE_NAME = 'abu-omar-van-v3';
+const CACHE_NAME = 'abu-omar-van-v4';
 const ASSETS_TO_CACHE = [
   './',
   './index.html',
   './manifest.json',
-  'https://res.cloudinary.com/dvzg70krq/image/upload/v1789063425/Icon-192_femixj.png',
+  './icon-192.png',
+  './icon-512.png',
   'https://res.cloudinary.com/dvzg70krq/image/upload/v1789062875/1789062579538_qnku1a.jpg',
   'https://res.cloudinary.com/dvzg70krq/image/upload/v1789062875/slider1_mqqrtd.jpg',
   'https://res.cloudinary.com/dvzg70krq/image/upload/v1789062874/logo_cnrd6r.jpg',
