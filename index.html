@@ -5,14 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>فان أبو عمر | لنقل وتوصيل الركاب والرحلات الخاصة</title>
   
-  <!-- إعدادات وتثبيت PWA -->
+  <!-- إعدادات وتثبيت PWA والأيقونات -->
   <link rel="manifest" href="manifest.json" />
   <meta name="theme-color" content="#0B132B" />
   <meta name="mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="apple-mobile-web-app-title" content="فان أبو عمر" />
-  <link rel="apple-touch-icon" href="https://res.cloudinary.com/dvzg70krq/image/upload/v1789063425/Icon-192_femixj.png" />
-  <link rel="icon" type="image/png" href="https://res.cloudinary.com/dvzg70krq/image/upload/v1789063425/Icon-192_femixj.png" />
+  <link rel="apple-touch-icon" sizes="192x192" href="./icon-192.png" />
+  <link rel="apple-touch-icon" sizes="512x512" href="./icon-512.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png" />
+  <link rel="icon" type="image/png" sizes="512x512" href="./icon-512.png" />
 
   <!-- خطوط تجوال وكايرو -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -114,7 +116,7 @@
   <!-- الحاوية الرئيسية للبطاقة -->
   <main class="w-full max-w-md mx-auto relative overflow-hidden glass-card sm:rounded-3xl shadow-2xl border-x-0 sm:border flex flex-col my-auto min-h-screen sm:min-h-0">
 
-    <!-- شريط تثبيت التطبيق الأنيق (يختفي كلياً بعد التثبيت أو إذا كان مثبتاً) -->
+    <!-- شريط تثبيت التطبيق الأنيق -->
     <aside id="installBar" class="hidden w-full bg-slate-900/90 border-b border-brand-gold/30 px-3.5 py-2 flex items-center justify-between text-xs z-40 backdrop-blur-md">
       <div class="flex items-center gap-2 text-slate-200">
         <i class="fa-solid fa-mobile-screen-button text-brand-gold text-sm"></i>
@@ -367,7 +369,7 @@
         </div>
       </div>
 
-      <!-- التذييل الأنيق -->
+      <!-- التذييل -->
       <footer class="mt-8 pt-4 border-t border-white/5 w-full flex flex-col items-center justify-center text-center">
         <p class="text-xs text-slate-400 flex items-center gap-1.5">
           <span>رحلات مريحة وآمنة في كل الأوقات</span>
@@ -388,9 +390,6 @@
   </div>
 
   <script>
-    /**
-     * منطق السلايدر
-     */
     let currentSlide = 0;
     const slides = document.querySelectorAll('.slider-slide');
     const dots = document.querySelectorAll('.slider-dot');
@@ -435,9 +434,6 @@
 
     window.addEventListener('load', () => startAutoSlide());
 
-    /**
-     * نسخ النص إلى الحافظة
-     */
     function copyToClipboard(text, customMessage) {
       try {
         const dummy = document.createElement('input');
@@ -453,9 +449,6 @@
       }
     }
 
-    /**
-     * إظهار رسالة توست
-     */
     function showToast(message) {
       const toast = document.getElementById('toast');
       const toastMsg = document.getElementById('toastMessage');
@@ -471,9 +464,6 @@
       }, 2400);
     }
 
-    /**
-     * تحميل بطاقة vCard
-     */
     function downloadVCard() {
       const name = "فان أبو عمر";
       const title = "نقل وتوصيل ركاب - هيونداي H1 VIP";
@@ -509,9 +499,6 @@
       showToast('جاري حفظ بطاقة الاتصال في هاتفك...');
     }
 
-    /**
-     * تسجيل Service Worker وإدارة شريط التثبيت الذكي
-     */
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
         navigator.serviceWorker.register('./sw.js').catch((err) => console.log('SW Error: ', err));
@@ -522,7 +509,6 @@
     const installBar = document.getElementById('installBar');
     const isRunningStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
 
-    // إخفاء الشريط نهائياً إذا كانت الصفحة مفتوحة كتطبيق مثبت
     if (!isRunningStandalone) {
       window.addEventListener('beforeinstallprompt', (e) => {
         e.preventDefault();
@@ -545,7 +531,6 @@
       });
     }
 
-    // إخفاء الشريط وتنبيه المستخدم عند اكتمال التثبيت
     window.addEventListener('appinstalled', () => {
       if (installBar) installBar.classList.add('hidden');
       showToast('تم تثبيت التطبيق بنجاح!');
